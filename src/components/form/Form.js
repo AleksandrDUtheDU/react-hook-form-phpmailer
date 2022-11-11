@@ -190,7 +190,7 @@ function Form() {
     return (
         <FormWrapp noValidate onSubmit={handleSubmit(onSubmit)}>
             <WrappInput>
-                <Input name="name" type="text" placeholder="Иван"
+                <Input name="name" type="text" id="name" placeholder="Иван"
                     {...register("name", {
                         required: true,
                         maxLength: 30,
@@ -200,10 +200,10 @@ function Form() {
                 {errors?.name?.type === "required" && <ErrorMessage>Это поле не заполнено</ErrorMessage>}
                 {errors?.name?.type === "maxLength" && <ErrorMessage>Имя не может быть более 30 символов</ErrorMessage>}
                 {/* {errors?.name?.type === "pattern" && <ErrorMessage>Имя не может содержать цифры</ErrorMessage>} */}
-                <Label as={'label'} htmlFor='text'>Ваше имя</Label>
+                <Label htmlFor='name'>Ваше имя</Label>
             </WrappInput>
             <WrappInput>
-                <Input name="email" type="email" placeholder="example@site.com"
+                <Input name="email" type="email" id="email" placeholder="example@site.com"
                     {...register("email", {
                         required: true,
                         // pattern: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
@@ -211,10 +211,10 @@ function Form() {
                 />
                 {errors?.email?.type === "required" && <ErrorMessage>Это поле не заполнено</ErrorMessage>}
                 {/* {errors?.mail?.type === "pattern" && <ErrorMessage>Это поле должно содержать E-Mail в формате example@site.com</ErrorMessage>} */}
-                <Label as={'label'}>Ваша почта</Label>
+                <Label htmlFor='email'>Ваша почта</Label>
             </WrappInput>
             <WrappTextarea>
-                <Textarea name="text" type="text" placeholder="Ваше сообщение..."
+                <Textarea name="text" type="text" id="text" placeholder="Ваше сообщение..."
                     {...register("text", {
                         required: true,
                         maxLength: 200
@@ -223,12 +223,12 @@ function Form() {
                 />
                 {errors?.text?.type === "required" && <ErrorMessage>Это поле не заполнено</ErrorMessage>}
                 {errors?.text?.type === "maxLength" && <ErrorMessage>Ваше сообщение не может быть более 200 символов</ErrorMessage>}
-                <Label as={'label'} htmlFor='text'>Ваше сообщение</Label>
+                <Label htmlFor='text'>Ваше сообщение</Label>
             </WrappTextarea>
             <TriggersBox>
-                <FormButton as={'button'} >Отправить сообщение</FormButton>
-                <PoliticTextBox as={'div'}>
-                    <PoliticInput type="checkbox"
+                <FormButton>Отправить сообщение</FormButton>
+                <PoliticTextBox>
+                    <PoliticInput type="checkbox" id="checkbox" name="checkbox"
                         {...register("checkbox", {
                             required: true,
                             checked: true,
@@ -236,7 +236,7 @@ function Form() {
                         })}
                     />
                     <div>
-                        <PoliticLabel>Я согласен(а) с <PoliticLink href="/privacy">политикой конфиденциальности</PoliticLink></PoliticLabel>
+                        <PoliticLabel htmlFor='checkbox' >Я согласен(а) с <PoliticLink href="/privacy">политикой конфиденциальности</PoliticLink></PoliticLabel>
                         <br />
                         {errors?.checkbox?.type === "required" && <ErrorMessage>Нужно принять политику конфиденциальности</ErrorMessage>}
                     </div>
